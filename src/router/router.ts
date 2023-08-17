@@ -1,5 +1,10 @@
 export const APP_ROUTES = {
   //Public routes
   ROOT: '/',
-  LOGIN: '/login'
+  LANDING: '/index',
+  LOGIN: '/login',
+
+  //Invalid or Error routes
+  INVALID: '*',
+  NOT_FOUND: '/404'
 }

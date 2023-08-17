@@ -10,3 +10,11 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sub-menu {
+  display: none;
+}
+
+.menu:hover .sub-menu {
+  display: block;
+}
