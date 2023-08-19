@@ -1,5 +1,5 @@
 import React from 'react'
-import {ASSETS} from 'src/assets'
+import Icon from 'src/components/icons/Icon'
 
 interface UserInfoProps {
   showUserName?: boolean;
@@ -8,8 +8,8 @@ const UserInfo = ({showUserName = true}: UserInfoProps) => {
   return (
     <div className="flex items-center space-x-4">
       <div className="relative">
-        <img src={ASSETS.USER_ICON} alt="User" className="w-6 h-6" />
-        <span className="w-[10px] h-[10px] bg-app-green absolute bottom-0 rounded-full right-0"></span>
+        <Icon icon="user" className="cursor-pointer fill-app-gray-600 hover:fill-app-red" />
+        <span className="w-[10px] h-[10px] bg-app-green-400 absolute bottom-0 rounded-full right-0"></span>
       </div>
       {showUserName &&
       <div className="text-base font-medium lg:block text-app-gray-600">Triin</div>

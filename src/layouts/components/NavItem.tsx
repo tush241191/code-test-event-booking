@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link, NavLink} from 'react-router-dom'
+import Icon from 'src/components/icons/Icon'
 
 import {MenuItem} from '../types'
 
@@ -25,15 +26,13 @@ const NavItem = ({menuItem}: NavItemProps) => {
       >
         {menuItem.label}
         {hasSubMenuItems &&
-          <svg className="ml-2" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 9.5L12 15.5L18 9.5" stroke="#333333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <Icon className="ml-2 text-app-gray-600" icon="chevron-down" size="lg" />
         }
       </NavLink>
       {hasSubMenuItems &&
         <div className="absolute z-10 w-56 p-2 bg-white shadow-md sub-menu lg:-left-8 top-full rounded-xl ring-1 ring-gray-900/5">
           {menuItem.items?.map(subItem =>
-            <Link to={subItem.url} className="block px-3 py-2 text-sm font-semibold leading-6 text-gray-900 rounded-lg hover:bg-gray-50" >{subItem.label}</Link>
+            <Link key={subItem.label} to={subItem.url} className="block px-3 py-2 text-sm font-semibold leading-6 text-gray-900 rounded-lg hover:bg-gray-50" >{subItem.label}</Link>
           )}
         </div>
       }

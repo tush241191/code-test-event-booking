@@ -9,7 +9,7 @@ interface BaseLayoutProps {
 const BaseLayout = ({children}: BaseLayoutProps) => {
 
   return (
-    <div className="relative w-full h-full min-h-screen bg-app-gray-200">
+    <div className="min-h-screen bg-app-gray-200">
       <Header />
       <main>
         <div className="w-full">{children}</div>
