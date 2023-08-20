@@ -131,8 +131,10 @@ const Header = () => {
               <NavItem key={menuItem.label} menuItem={menuItem} />
             )
           }
-          <span className="h-8 border border-app-gray-300"></span>
-          <NavItem menuItem={otherMenu} />
+          <div className="flex items-center group">
+            <span className="h-8 border border-app-gray-300 group-hover:hidden"></span>
+            <NavItem menuItem={otherMenu} />
+          </div>
         </nav>
       </div>
 
