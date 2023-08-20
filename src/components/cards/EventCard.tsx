@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import React from 'react'
 import {EventData} from 'src/feature/landing/types'
+import {getFormattedDateString} from 'src/utils/dateTime'
 
 import Button from '../button/Button'
 import Icon from '../icons/Icon'
@@ -75,7 +76,7 @@ const EventCard = ({event, isTopEvent = false, ordinal}: EventCardProps) => {
       <div className={infoWrapperClasses}>
         <p className="order-1 text-base font-bold leading-5 lg:order-2 lg:mt-[7px] break-words line-clamp-2">{event.title}</p>
         <p className="order-2 lg:order-1 text-sm leading-[18px] font-medium text-app-purple-200 mt-[7px] lg:mt-0 flex items-center space-x-2">
-          <span>L 19.august</span>
+          <span>{getFormattedDateString(event.date)}</span>
           {isTopEvent && event.time &&
             <>
               <span className="lg:hidden bg-app-purple-200 w-0.5 h-0.5 rounded-full"></span>
