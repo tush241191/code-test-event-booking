@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link, NavLink} from 'react-router-dom'
 import Icon from 'src/components/icons/Icon'
+import {APP_ROUTES} from 'src/router/router'
 
 import {MenuItem} from '../types'
 
@@ -15,7 +16,7 @@ const NavItem = ({menuItem}: NavItemProps) => {
       className="relative menu group"
     >
       <NavLink
-        to={menuItem.url}
+        to={APP_ROUTES.EVENTS.replace(':category', menuItem.url)}
         className={({isActive}) =>
           `w-full inline-flex items-center px-4 py-1.5 lg:py-3 text-base font-medium text-app-gray-600 
           ${isActive && 'border-b-2 border-app-red cursor-default'}
@@ -31,7 +32,7 @@ const NavItem = ({menuItem}: NavItemProps) => {
       {hasSubMenuItems &&
         <div className="absolute z-10 w-56 p-2 bg-white shadow-md sub-menu lg:-left-8 top-full rounded-xl ring-1 ring-app-gray-600/5">
           {menuItem.items?.map(subItem =>
-            <Link key={subItem.label} to={subItem.url} className="block px-3 py-2 text-sm font-medium leading-6 rounded-lg text-app-gray-600 hover:bg-app-red hover:text-white" >{subItem.label}</Link>
+            <Link key={subItem.label} to={APP_ROUTES.EVENTS.replace(':category', subItem.url)} className="block px-3 py-2 text-sm font-medium leading-6 rounded-lg text-app-gray-600 hover:bg-app-red hover:text-white" >{subItem.label}</Link>
           )}
         </div>
       }

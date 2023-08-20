@@ -2,73 +2,11 @@ import React, {useState} from 'react'
 import {ASSETS} from 'src/assets'
 import Icon from 'src/components/icons/Icon'
 import Input from 'src/components/inputs/Input'
+import {menuItems, otherMenu} from 'src/utils/constants'
 
 import CartInfo from './components/CartInfo'
 import NavItem from './components/NavItem'
 import UserInfo from './components/UserInfo'
-import {MenuItem} from './types'
-
-const menuItems: MenuItem[] = [
-  {
-    url: '/Kõik',
-    label: 'Kõik'
-  },
-  {
-    url: '/Täna',
-    label: 'Täna'
-  },
-  {
-    url: '/Nädalavahetusel',
-    label: 'Nädalavahetusel'
-  },
-  {
-    url: '/uued',
-    label: 'uued'
-  },
-  {
-    url: '/',
-    label: 'Muusika'
-  },
-  {
-    url: '/Teater',
-    label: 'Teater'
-  },
-  {
-    url: '/Kogupere',
-    label: 'Kogupere'
-  },
-  {
-    url: '/Sport',
-    label: 'Sport'
-  },
-  {
-    url: '/Festival',
-    label: 'Festival'
-  },
-  {
-    url: '/Veel',
-    label: 'Veel',
-    items: [
-      {
-        url: '/Veel1',
-        label: 'Veel1'
-      },
-      {
-        url: '/Veel2',
-        label: 'Veel2'
-      },
-      {
-        url: '/Veel3',
-        label: 'Veel3'
-      }
-    ]
-  }
-]
-
-const otherMenu: MenuItem = {
-  url: '/PÖFF',
-  label: 'PÖFF'
-}
 
 const Header = () => {
 

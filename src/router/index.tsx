@@ -38,7 +38,7 @@ const publicRoutes: RouteObject[] = [
     element: <BaseLayoutView />,
     children: [
       {path: APP_ROUTES.ROOT, element: <Landing />},
-      {path: APP_ROUTES.LANDING, element: <Landing />}
+      {path: APP_ROUTES.EVENTS, element: <Landing />}
     ]
   }
 ]

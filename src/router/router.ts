@@ -1,7 +1,7 @@
 export const APP_ROUTES = {
   //Public routes
   ROOT: '/',
-  LANDING: '/index',
+  EVENTS: '/events/:category',
   LOGIN: '/login',
 
   //Invalid or Error routes
