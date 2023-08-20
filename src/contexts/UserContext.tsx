@@ -1,10 +1,5 @@
 import React, {ReactNode} from 'react'
-
-export interface User {
-  id: string;
-  firstName: string;
-  lastName: string;
-}
+import {User} from 'src/utils/types'
 
 interface UserContextInterface {
   isAuthenticated: boolean;

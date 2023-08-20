@@ -17,11 +17,8 @@ const NavItem = ({menuItem}: NavItemProps) => {
       <NavLink
         to={menuItem.url}
         className={({isActive}) =>
-          `w-full inline-flex items-center px-4 py-1.5 lg:py-3 text-base font-medium text-app-gray-600 border-b-2 ${
-            isActive
-              ? 'border-app-red cursor-default'
-              : ''
-          }
+          `w-full inline-flex items-center px-4 py-1.5 lg:py-3 text-base font-medium text-app-gray-600 
+          ${isActive && 'border-b-2 border-app-red cursor-default'}
           ${!hasSubMenuItems && 'group-hover:bg-app-red group-hover:text-white'}
           `
         }

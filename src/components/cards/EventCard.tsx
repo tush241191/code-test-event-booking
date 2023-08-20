@@ -1,7 +1,11 @@
 import classNames from 'classnames'
 import React from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import {EventData} from 'src/feature/landing/types'
+import {addToCart, removeFromCart} from 'src/store/cartSlice'
+import {selectCartItems} from 'src/store/selectors'
 import {getFormattedDateString} from 'src/utils/dateTime'
+import {CartItem} from 'src/utils/types'
 
 import Button from '../button/Button'
 import Icon from '../icons/Icon'
@@ -13,6 +17,24 @@ interface EventCardProps {
 }
 
 const EventCard = ({event, isTopEvent = false, ordinal}: EventCardProps) => {
+  const dispatch = useDispatch()
+  const cartItems = useSelector(selectCartItems)
+
+  const handleAddToCart = () => {
+    const cartItem: CartItem = {
+      event: event,
+      quantity: 1
+    }
+    dispatch(addToCart(cartItem))
+  }
+
+  const handleRemoveFromCart = () => {
+    const cartItem = cartItems.find(item => item.event.id === event.id)
+    if (cartItem) dispatch(removeFromCart(cartItem))
+  }
+
+  console.log(handleRemoveFromCart)
+
   const wrapperClasses = classNames(
     'flex w-full h-full group',
     {
@@ -54,10 +76,10 @@ const EventCard = ({event, isTopEvent = false, ordinal}: EventCardProps) => {
             </div>
             <div className="absolute items-center justify-center hidden w-full transition duration-300 ease-in-out bottom-2 lg:bottom-0 lg:pt-4 lg:bg-white group-hover:flex rounded-t-2xl">
               <div className="hidden lg:block">
-                <Button text="Osta Pilet" btnType="primary" leftIcon="cart" size="sm" />
+                <Button onClick={handleAddToCart} text="Osta Pilet" btnType="primary" leftIcon="cart" size="sm" />
               </div>
               <div className="lg:hidden">
-                <Button text="Osta Pilet" btnType="primary" size="sm" />
+                <Button onClick={handleAddToCart} text="Osta Pilet" btnType="primary" size="sm" />
               </div>
             </div>
           </>
@@ -68,7 +90,7 @@ const EventCard = ({event, isTopEvent = false, ordinal}: EventCardProps) => {
             <span className="w-7 h-7 bg-app-red flex items-center justify-center rounded-[54px] rounded-l-none text-white text-base font-bold">{ordinal}</span>
           </div>
           <div className="absolute inset-0 z-10 items-end justify-center hidden bottom-2 group-hover:flex">
-            <Button text="Osta Pilet" btnType="primary" leftIcon="cart" size="sm" />
+            <Button onClick={handleAddToCart} text="Osta Pilet" btnType="primary" leftIcon="cart" size="sm" />
           </div>
         </>
         }

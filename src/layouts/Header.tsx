@@ -3,6 +3,7 @@ import {ASSETS} from 'src/assets'
 import Icon from 'src/components/icons/Icon'
 import Input from 'src/components/inputs/Input'
 
+import CartInfo from './components/CartInfo'
 import NavItem from './components/NavItem'
 import UserInfo from './components/UserInfo'
 import {MenuItem} from './types'
@@ -70,6 +71,7 @@ const otherMenu: MenuItem = {
 }
 
 const Header = () => {
+
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
   const [searchValue, setSearchValue] = useState<string>('')
 
@@ -107,9 +109,8 @@ const Header = () => {
               <Icon icon="heart" className="cursor-pointer fill-app-gray-600 hover:fill-app-red" />
             </div>
 
-            <div className="relative hidden group lg:block">
-              <Icon icon="cart" className="cursor-pointer hover:fill-app-red" />
-              <span className="absolute group-hover:hidden top-[-6px] right-[-5px] flex items-center justify-center w-4 h-4 p-1 text-base font-medium text-white rounded-full bg-app-red">3</span>
+            <div className="hidden lg:block">
+              <CartInfo />
             </div>
           </div>
           <div className="relative z-10 flex items-center lg:hidden">
@@ -140,7 +141,7 @@ const Header = () => {
 
       {/* Mobile menu, show/hide based on menu state */}
       {showMobileMenu &&
-      <nav className="absolute z-50 w-full bg-white lg:hidden" aria-label="Global" id="mobile-menu">
+      <nav className="absolute z-50 w-full min-h-screen bg-white shadow-md lg:hidden" aria-label="Global" id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1">
           {menuItems.length > 0 &&
             menuItems.map(menuItem =>
@@ -152,11 +153,7 @@ const Header = () => {
           <UserInfo />
           <div className="flex items-center space-x-4">
             <Icon icon="heart" className="cursor-pointer fill-app-gray-600 hover:fill-app-red" />
-
-            <div className="relative">
-              <Icon icon="cart" />
-              <span className="absolute top-[-6px] right-[-5px] flex items-center justify-center w-4 h-4 p-1 text-base font-medium text-white rounded-full bg-app-red">3</span>
-            </div>
+            <CartInfo />
           </div>
         </div>
       </nav>
