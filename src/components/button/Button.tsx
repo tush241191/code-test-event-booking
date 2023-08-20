@@ -4,7 +4,7 @@ import React, {ButtonHTMLAttributes} from 'react'
 import Icon, {Icons} from '../icons/Icon'
 import Spinner from '../spinners/Spinner'
 
-type ButtonType = 'primary' | 'secondary' | 'tertiary'
+type ButtonType = 'primary' | 'secondary' | 'tertiary' | 'danger'
 export type ButtonSizes = 'sm' | 'md';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -40,12 +40,13 @@ const Button = ({
       'bg-app-gray-50 text-[#CBCCCE]': disabled,
       'bg-app-green-400 text-white hover:bg-app-green-300 focus:bg-app-green-300': btnType === 'primary' && !disabled,
       'bg-white text-app-gray-600 border border-app-purple-200 hover:bg-app-purple-200 hover:text-white focus:bg-app-green-400 focus:text-white': btnType === 'secondary' && !disabled,
-      'bg-white text-app-gray-500 border border-app-gray-50 hover:bg-app-gray-300 hover:text-app-gray-500 focus:bg-app-gray-300 focus:text-[#AAABAD]': btnType === 'tertiary' && !disabled
+      'bg-white text-app-gray-500 border border-app-gray-50 hover:bg-app-gray-300 hover:text-app-gray-500 focus:bg-app-gray-300 focus:text-[#AAABAD]': btnType === 'tertiary' && !disabled,
+      'bg-app-red text-white hover:bg-app-red/90 focus:bg-app-red/90': btnType === 'danger' && !disabled
     }
   )
 
   const iconClasses = classNames({
-    'fill-white': btnType === 'primary',
+    'fill-white': btnType === 'primary' || btnType === 'danger',
     'fill-app-gray-600': btnType === 'secondary' || btnType === 'tertiary',
     'fill-app-gray-200': disabled,
     'opacity-0': loading

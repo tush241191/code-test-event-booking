@@ -8,6 +8,8 @@ import ChevronRightIcon from '../../assets/icons/ChevronRightIcon'
 import ChevronUpIcon from '../../assets/icons/ChevronUpIcon'
 import HeartFillIcon from '../../assets/icons/HeartFillIcon'
 import HeartIcon from '../../assets/icons/HeartIcon'
+import PlusIcon from '../../assets/icons/PlusIcon'
+import TrashIcon from '../../assets/icons/TrashIcon'
 import UserIcon from '../../assets/icons/UserIcon'
 
 export type Icons = typeof iconList[number];
@@ -31,6 +33,8 @@ export const iconList = [
   'chevron-up',
   'heart',
   'heart-fill',
+  'plus',
+  'trash',
   'user'
 ]
 
@@ -42,6 +46,8 @@ const iconComponents: IconComponent = {
   ChevronDownIcon,
   HeartIcon,
   HeartFillIcon,
+  PlusIcon,
+  TrashIcon,
   UserIcon
 }
 
