@@ -2,6 +2,7 @@ import {lazy, Suspense} from 'react'
 import {Outlet, RouteObject} from 'react-router-dom'
 import NotFound from 'src/components/errors/NotFound'
 import Loading from 'src/components/loading/Loading'
+import {UserProvider} from 'src/contexts/UserContext'
 import BaseLayout from 'src/layouts/BaseLayout'
 import EmptyLayout from 'src/layouts/EmptyLayout'
 
@@ -16,9 +17,11 @@ const Landing = SuspenseLoader(lazy(() => import('src/feature/landing/Landing'))
 
 const BaseLayoutView = () => {
   return (
-    <BaseLayout>
-      <Outlet />
-    </BaseLayout>
+    <UserProvider>
+      <BaseLayout>
+        <Outlet />
+      </BaseLayout>
+    </UserProvider>
   )
 }
 
