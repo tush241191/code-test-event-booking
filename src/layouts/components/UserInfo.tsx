@@ -1,5 +1,6 @@
 import React from 'react'
 import Icon from 'src/components/icons/Icon'
+import Tooltip from 'src/components/tooltip/Tooltip'
 import {useUser} from 'src/contexts/UserContext'
 
 interface UserInfoProps {
@@ -10,8 +11,12 @@ const UserInfo = ({showUserName = true}: UserInfoProps) => {
 
   return (
     <div className="flex items-center space-x-4">
-      <div className="relative">
-        <Icon icon="user" className="cursor-pointer fill-app-gray-600 hover:fill-app-red" />
+      <div className="relative" data-tooltip-id="user-tooltip" data-tooltip-content="Login">
+        <Icon
+          icon="user"
+          className="cursor-pointer fill-app-gray-600 hover:fill-app-red"
+        />
+        <Tooltip id="user-tooltip" />
         {isAuthenticated &&
           <span className="w-[10px] h-[10px] bg-app-green-400 absolute bottom-0 rounded-full right-0"></span>
         }
