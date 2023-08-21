@@ -1,4 +1,4 @@
-import BadgeIcon from './images/badge-icon.svg'
+import BadgeIcon from './images/badge-icon.png'
 import LogoLg from './images/logo-lg.svg'
 import LogoSM from './images/logo-sm.svg'
 
