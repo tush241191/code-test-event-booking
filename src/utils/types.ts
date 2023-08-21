@@ -14,3 +14,7 @@ export interface CartItem {
 export interface CartState {
   items: CartItem[];
 }
+
+export interface LikeState {
+  items: EventData[];
+}

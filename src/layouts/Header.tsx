@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import {ASSETS} from 'src/assets'
-import Icon from 'src/components/icons/Icon'
 import Input from 'src/components/inputs/Input'
 import {menuItems, otherMenu} from 'src/utils/constants'
 
 import CartInfo from './components/CartInfo'
+import LikeInfo from './components/LikeInfo'
 import NavItem from './components/NavItem'
 import UserInfo from './components/UserInfo'
 
@@ -44,7 +44,7 @@ const Header = () => {
             </div>
 
             <div className="hidden lg:block">
-              <Icon icon="heart" className="cursor-pointer fill-app-gray-600 hover:fill-app-red" />
+              <LikeInfo />
             </div>
 
             <div className="hidden lg:block">
@@ -90,7 +90,7 @@ const Header = () => {
         <div className="flex items-center justify-between px-4 pt-4 pb-3 border-t border-gray-200">
           <UserInfo />
           <div className="flex items-center space-x-4">
-            <Icon icon="heart" className="cursor-pointer fill-app-gray-600 hover:fill-app-red" />
+            <LikeInfo />
             <CartInfo />
           </div>
         </div>

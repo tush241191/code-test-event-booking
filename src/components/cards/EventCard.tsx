@@ -3,12 +3,15 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {EventData} from 'src/feature/landing/types'
 import {addToCart, removeFromCart} from 'src/store/cartSlice'
-import {selectCartItems} from 'src/store/selectors'
+import {like, unlike} from 'src/store/likeSlice'
+import {selectCartItems, selectLikeItems} from 'src/store/selectors'
 import {getFormattedDateString} from 'src/utils/dateTime'
 import {CartItem} from 'src/utils/types'
 
 import Button from '../button/Button'
 import Icon from '../icons/Icon'
+
+type LikeAction = 'LIKE' | 'UNLIKE'
 
 interface EventCardProps {
   event: EventData;
@@ -19,6 +22,7 @@ interface EventCardProps {
 const EventCard = ({event, isTopEvent = false, ordinal}: EventCardProps) => {
   const dispatch = useDispatch()
   const cartItems = useSelector(selectCartItems)
+  const likeItems = useSelector(selectLikeItems)
 
   const handleAddToCart = () => {
     const cartItem: CartItem = {
@@ -34,6 +38,21 @@ const EventCard = ({event, isTopEvent = false, ordinal}: EventCardProps) => {
   }
 
   const isAddedToCart = (): boolean => cartItems.some(item => item.event.id === event.id)
+  const isLiked = (): boolean => likeItems.some(item => item.id === event.id)
+
+  const handleLikeActions = (action: LikeAction) => {
+    switch (action) {
+      case 'LIKE':
+        dispatch(like(event))
+        break
+      case 'UNLIKE':
+        const eventItem = likeItems.find(item => item.id === event.id)
+        if (eventItem) dispatch(unlike(eventItem))
+        break
+      default:
+        break
+    }
+  }
 
   const wrapperClasses = classNames(
     'flex w-full h-full group',
@@ -87,7 +106,7 @@ const EventCard = ({event, isTopEvent = false, ordinal}: EventCardProps) => {
         {!isTopEvent &&
           <>
             <div className="hidden lg:block absolute top-[6px] right-[8px]">
-              <Icon icon="heart-fill" className="cursor-pointer fill-transparent hover:fill-app-purple-400/50" />
+              <Icon onClick={() => handleLikeActions(isLiked() ? 'UNLIKE' : 'LIKE')} icon="heart-fill" className={`cursor-pointer  ${isLiked() ? 'fill-app-purple-400/50' : 'fill-transparent hover:fill-app-purple-400/50'}`} />
             </div>
             <div className="absolute items-center justify-center hidden w-full transition duration-300 ease-in-out bottom-2 lg:bottom-0 lg:pt-4 lg:bg-white group-hover:flex rounded-t-2xl">
               <div className="hidden lg:block">
