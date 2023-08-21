@@ -1,7 +1,4 @@
-# React base template
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-It include TailwindCSS, Eslint and Prettier.
+# React event booking test
 
 ## Available Scripts
 
